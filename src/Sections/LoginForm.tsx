@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { validatePassword, validatePhoneOrEmail } from "../utils.ts";
 
 interface LoginFormProps {
@@ -8,12 +8,7 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({ submit }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // these state variables are changing every time the user types, which is not great
-  // extra credit: what function could you use to reduce re-rendering?
-  // hint: It's part of the lodash library
 
-  // regex validation is pretty cheap computationally, so it's fine to do this
-  // extra credit: what hook could you use if validation was expensive?
   const isPasswordValid = validatePassword(password);
   const isUsernameValid = validatePhoneOrEmail(username);
   const isFormValid = isPasswordValid && isUsernameValid;
@@ -39,8 +34,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ submit }) => {
           width: "25vw",
         }}
       >
-        {/* Mention that if you had more time, you would show better error messages */}
-        {/* how else would you improve the UX? */}
         {showUsernameError && <p style={{ color: "red" }}>Invalid username</p>}
         <input
           placeholder="Phone or Email"
