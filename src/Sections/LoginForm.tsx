@@ -39,16 +39,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ submit }) => {
           placeholder="Phone or Email"
           onChange={(e) => setUsername(e.target.value)}
           value={username}
-          disabled={isFormValid}
         />
         {showPasswordError && <p style={{ color: "red" }}>Invalid password </p>}
         <input
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
-          disabled={isFormValid}
         />
-        <button disabled={isFormValid}>Submit</button>
+        <button disabled={!isFormValid}>Submit</button>
       </form>
     </div>
   );
